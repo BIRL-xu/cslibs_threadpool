@@ -5,10 +5,10 @@ project(utils_threadpool)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED)
+find_package(OpenCV QUIET)
 
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "-Wall -O3 -march=core2 -pthread")
-set(CMAKE_CXX_FLAGS "-pthread")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -21,6 +21,14 @@ else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no
 C++11 support. Please use a different C++ compiler.")
 endif()
+
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES utils_threadpool
+#  CATKIN_DEPENDS other_catkin_pkg
+#  DEPENDS system_lib
+)
+
 
 include_directories(
     include
@@ -55,11 +63,19 @@ target_link_libraries(utils_threadpool_th
 )
 
 
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES utils_threadpool
-#  CATKIN_DEPENDS other_catkin_pkg
-#  DEPENDS system_lib
+if(${OpenCV_FOUND})
+
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(utils_threadpool_tsv
+    src/tests/test_scheduling_visual.cpp
 )
+
+target_link_libraries(utils_threadpool_tsv
+    ${OpenCV_LIBRARIES}
+    utils_threadpool
+)
+
+endif()
 
 

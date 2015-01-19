@@ -39,7 +39,6 @@ void TaskScheduler::shutdown()
     queue_.clear();
     for(auto &t : workers_) {
         t->done();
-//        t->join();
     }
 
 }
