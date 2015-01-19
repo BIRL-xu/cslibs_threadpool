@@ -7,6 +7,7 @@
 #include <thread>
 #include <future>
 #include <mutex>
+#include <atomic>
 
 class TaskWorker
 {
@@ -20,13 +21,12 @@ public:
     void      interrupt();
 
 private:
-    std::mutex  task_mutex_;
-    Task::Ptr   task_;
-    TaskQueue  &task_queue_;
+    std::mutex       task_mutex_;
+    Task::Ptr        task_;
+    TaskQueue       &task_queue_;
 
-    std::mutex  interruption_mutex_;
-    bool        interruption_request_;
-    std::thread thread_;
+    std::atomic_bool interruption_requested_;
+    std::thread      thread_;
 
     void run();
 

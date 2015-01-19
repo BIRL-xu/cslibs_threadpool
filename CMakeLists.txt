@@ -27,27 +27,37 @@ include_directories(
 )
 
 add_library(utils_threadpool
-#    src/threadpool.cpp
-    src/task_scheduling/task_scheduler.cpp
-    src/task_scheduling/task_worker.cpp
-    src/task_scheduling/task_queue.cpp
-    src/task_scheduling/task.cpp
+    src/threading/threadpool.cpp
+    src/threading/thread.cpp
+
+    src/scheduling/task_scheduler.cpp
+    src/scheduling/task_worker.cpp
+    src/scheduling/task_queue.cpp
+    src/scheduling/task.cpp
+
     src/sync/semaphore.cpp
 )
 
 add_executable(utils_threadpool_ts
-    src/tests/test_task_scheduler.cpp
+    src/tests/test_scheduler.cpp
 )
 
 target_link_libraries(utils_threadpool_ts
     utils_threadpool
 )
 
+add_executable(utils_threadpool_th
+    src/tests/test_threading.cpp
+)
+
+target_link_libraries(utils_threadpool_th
+    utils_threadpool
+)
 
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES utils_threadpool
+  INCLUDE_DIRS include
+  LIBRARIES utils_threadpool
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
