@@ -14,17 +14,19 @@ class TaskWorker
 public:
     typedef std::shared_ptr<TaskWorker> Ptr;
 
-    TaskWorker(TaskQueue &task_queue);
+    TaskWorker(TaskQueue::Ptr &task_queue);
     virtual ~TaskWorker();
 
     void      done();
     void      interrupt();
+    bool      running();
 
 private:
     std::mutex       task_mutex_;
     Task::Ptr        task_;
-    TaskQueue       &task_queue_;
+    TaskQueue::Ptr   task_queue_;
 
+    std::atomic_bool running_;
     std::atomic_bool interruption_requested_;
     std::thread      thread_;
 

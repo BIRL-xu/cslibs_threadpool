@@ -21,14 +21,14 @@ int main(int argc, char *argv[])
 
     TaskScheduler ts(4);
 
-    /// ABORT
+    /// STD
     for(unsigned int i = 0 ; i < 255 ; ++i) {
         std::function<void()> lambda = [i,&m](){update(i, m);};
         Task::Ptr task(new Task(lambda));
         ts.push(task);
     }
 
-    while(true) {
+    while(ts.running()) {
         cv::Mat curr = m.clone();
         cv::imshow("test_threadpool_visual", curr);
 
@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
 
     cv::imshow("test_threadpool_visual", m);
     cv::waitKey(0);
+
+    ts.restart(4);
 
     /// APPEND
     m = cv::Mat(510,510,CV_8UC3, cv::Scalar::all(0));
@@ -68,7 +70,7 @@ int main(int argc, char *argv[])
     if(chain)
         ts.push(chain);
 
-    while(true) {
+    while(ts.running()) {
         cv::Mat curr = m.clone();
         cv::imshow("test_threadpool_visual", curr);
         int key = cv::waitKey(10) & 0xFF;

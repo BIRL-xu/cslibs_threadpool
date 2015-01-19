@@ -2,6 +2,7 @@
 #define SEMAPHORE_H
 
 #include <mutex>
+#include <atomic>
 #include <condition_variable>
 
 namespace std {
@@ -19,7 +20,7 @@ private:
     std::mutex                  mutex_;
     std::condition_variable     cv_;
     unsigned int                count_;
-    bool                        release_request_;
+    atomic_bool                 release_request_;
 };
 }
 

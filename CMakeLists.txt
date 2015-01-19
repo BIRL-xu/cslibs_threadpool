@@ -7,7 +7,7 @@ project(utils_threadpool)
 find_package(catkin REQUIRED)
 find_package(OpenCV QUIET)
 
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-Wall -O3 -march=core2 -pthread")
 
 include(CheckCXXCompilerFlag)

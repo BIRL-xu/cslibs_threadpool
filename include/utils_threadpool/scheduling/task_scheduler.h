@@ -17,12 +17,16 @@ public:
     void push(const std::vector<Task::Ptr> &tasks,
               const bool blocking = false);
 
+    bool running();
+
     void wait();
 
     void shutdown();
 
+    void restart(const unsigned int threads);
+
 private:
-    TaskQueue   queue_;
+    TaskQueue::Ptr               queue_;
 
     std::vector<TaskWorker::Ptr> workers_;
 

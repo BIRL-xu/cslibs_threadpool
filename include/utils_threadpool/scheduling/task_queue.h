@@ -5,12 +5,15 @@
 #include <utils_threadpool/sync/semaphore.h>
 #include <thread>
 #include <mutex>
+#include <memory>
 #include <condition_variable>
 #include <queue>
 
 class TaskQueue
 {
 public:
+    typedef std::shared_ptr<TaskQueue> Ptr;
+
     TaskQueue();
 
     void push(const Task::Ptr &task);
