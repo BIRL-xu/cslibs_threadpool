@@ -2,7 +2,7 @@
 #define TASK_QUEUE_H
 
 #include "task.h"
-#include "semaphore.h"
+#include <utils_threadpool/sync/semaphore.h>
 #include <thread>
 #include <mutex>
 #include <condition_variable>

@@ -22,17 +22,21 @@ else()
 C++11 support. Please use a different C++ compiler.")
 endif()
 
+include_directories(
+    include
+)
+
 add_library(utils_threadpool
 #    src/threadpool.cpp
-    src/task_scheduler.cpp
-    src/task_worker.cpp
-    src/task_queue.cpp
-    src/task.cpp
-    src/semaphore.cpp
+    src/task_scheduling/task_scheduler.cpp
+    src/task_scheduling/task_worker.cpp
+    src/task_scheduling/task_queue.cpp
+    src/task_scheduling/task.cpp
+    src/sync/semaphore.cpp
 )
 
 add_executable(utils_threadpool_ts
-    src/test_task_scheduler.cpp
+    src/tests/test_task_scheduler.cpp
 )
 
 target_link_libraries(utils_threadpool_ts
