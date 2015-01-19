@@ -17,13 +17,13 @@ public:
     void push(const std::vector<Task::Ptr> &tasks);
 
     void get(Task::Ptr &task);
-    void finish(Task::Ptr &task);
 
-    void cancel();
+    void clear();
     void wait();
     bool empty();
 
 private:
+    std::semaphore          waiting_semaphore_;
     std::mutex              waiting_mutex_;
     std::condition_variable waiting_cv_;
     std::queue<Task::Ptr>   waiting_;

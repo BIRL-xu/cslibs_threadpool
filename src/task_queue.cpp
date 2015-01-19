@@ -10,6 +10,7 @@ void TaskQueue::push(const Task::Ptr &task)
 {
     lock_guard<mutex> l(waiting_mutex_);
     waiting_.push(task);
+    waiting_semaphore_.post();
 }
 
 void TaskQueue::push(const std::vector<Task::Ptr> &tasks)
@@ -19,21 +20,32 @@ void TaskQueue::push(const std::vector<Task::Ptr> &tasks)
         it != tasks.end() ;
         ++it)
         waiting_.push(*it);
+    waiting_semaphore_.post();
 }
 
 void TaskQueue::get(Task::Ptr &task)
 {
-    lock_guard<mutex> l(waiting_mutex_);
-    task = waiting_.front();
-    waiting_.pop();
-    waiting_cv_.notify_one();
+    waiting_semaphore_.wait();
+    {
+        lock_guard<mutex> l(waiting_mutex_);
+
+        if(waiting_.empty()) {
+            task = nullptr;
+            return;
+        }
+
+        task = waiting_.front();
+        waiting_.pop();
+        waiting_cv_.notify_all();
+    }
 }
 
-void TaskQueue::cancel()
+void TaskQueue::clear()
 {
     lock_guard<mutex> l(waiting_mutex_);
     while(!waiting_.empty())
-        waiting_.pop();
+       waiting_.pop();
+    waiting_semaphore_.release_all();
 }
 
 void TaskQueue::wait()
