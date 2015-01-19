@@ -24,7 +24,7 @@ private:
     std::mutex  mutex_;
     std::vector<Thread::Ptr> threads_;
 
-    void removeThread(const Thread *thread);
+    void updateThreadList();
 };
 
 #endif // THREADPOOL_H

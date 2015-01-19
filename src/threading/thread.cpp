@@ -6,13 +6,26 @@ Thread::Thread(ThreadPool &pool,
                const Runnable::Ptr &runnable) :
     threadpool_(pool),
     runnable_(runnable),
-    thread_(std::bind(&Thread::run, this))
+    thread_(std::bind(&Thread::run, this)),
+    interrupt_requested_(false),
+    running_(true)
 {
+}
+
+Thread::~Thread()
+{
+    if(thread_.joinable())
+        thread_.join();
+}
+
+bool Thread::isActive()
+{
+    return running_;
 }
 
 void Thread::interrupt()
 {
-
+    interrupt_requested_ = true;
 }
 
 void Thread::run()
@@ -24,7 +37,5 @@ void Thread::run()
         can_run = runnable_->run();
     } while(can_run);
 
-    threadpool_.removeThread(this);
-
-    thread_.join();
+    running_ = false;
 }

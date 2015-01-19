@@ -15,7 +15,7 @@ struct Increment : public Runnable {
     bool run() {
         if(count > 10)
             return false;
-        std::chrono::milliseconds dura( 1000 );
+        std::chrono::milliseconds dura( 500 );
         std::this_thread::sleep_for( dura );
         ++count;
         return true;
@@ -32,13 +32,13 @@ int main(int argc, char *argv[])
     for(unsigned int i = 0 ; i < 10 ; ++i) {
         Runnable::Ptr run(new Increment);
         pool.add(run);
-        std::chrono::milliseconds dura( 1000 );
+        std::chrono::milliseconds dura( 250 );
         std::this_thread::sleep_for( dura );
         std::cout << "Active Threads " << pool.activeThreads() << std::endl;
     }
 
     while(pool.activeThreads() > 0) {
-        std::chrono::milliseconds dura( 1000 );
+        std::chrono::milliseconds dura( 250 );
         std::this_thread::sleep_for( dura );
         std::cout << pool.activeThreads() << std::endl;
     }

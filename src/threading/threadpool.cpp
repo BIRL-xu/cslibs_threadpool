@@ -8,6 +8,7 @@ ThreadPool::ThreadPool()
 
 unsigned int ThreadPool::activeThreads()
 {
+    updateThreadList();
     lock_guard<mutex> l(mutex_);
     return threads_.size();
 }
@@ -26,17 +27,14 @@ void ThreadPool::shutdown()
         t->interrupt();
 }
 
-void ThreadPool::removeThread(const Thread *thread)
+void ThreadPool::updateThreadList()
 {
     lock_guard<mutex> l(mutex_);
-
-    auto it = threads_.begin();
-    for(; it != threads_.end(); ++it) {
-        if(it->get() == thread)
-            break;
+    std::vector<Thread::Ptr> active_threads;
+    for(auto t : threads_) {
+        if(t->isActive())
+            active_threads.push_back(t);
     }
-
-    if(it != threads_.end()) {
-        threads_.erase(it);
-    }
+    threads_.clear();
+    std::swap(active_threads, threads_);
 }
