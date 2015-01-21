@@ -8,7 +8,7 @@ find_package(catkin REQUIRED)
 find_package(OpenCV QUIET)
 
 set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "-Wall -O3 -march=core2 -pthread")
+set(CMAKE_CXX_FLAGS "-Wall -O3 -march=core2")
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -44,6 +44,10 @@ add_library(utils_threadpool
     src/scheduling/task.cpp
 
     src/sync/semaphore.cpp
+)
+
+target_link_libraries(utils_threadpool
+    pthread
 )
 
 add_executable(utils_threadpool_ts
