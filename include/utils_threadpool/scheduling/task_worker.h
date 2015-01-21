@@ -9,6 +9,8 @@
 #include <mutex>
 #include <atomic>
 
+namespace utils_threadpool {
+namespace scheduling {
 class TaskWorker
 {
 public:
@@ -33,5 +35,7 @@ private:
     void run();
 
 };
+}
+}
 
 #endif // TASK_WORKER_THREAD_H

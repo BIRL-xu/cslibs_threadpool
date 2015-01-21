@@ -3,10 +3,14 @@
 #include <chrono>
 #include <thread>
 
-Task::Task(std::function<void()> &todo) :
+using namespace std;
+using namespace utils_threadpool;
+using namespace scheduling;
+
+Task::Task(function<void()> &todo) :
     appendix_(nullptr)
 {
-    pt_ = std::packaged_task<void()>(todo);
+    pt_ = packaged_task<void()>(todo);
     ft_ = pt_.get_future();
 }
 void Task::append(const Task::Ptr &task)

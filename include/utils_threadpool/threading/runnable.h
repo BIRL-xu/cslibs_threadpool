@@ -3,6 +3,8 @@
 
 #include <memory>
 
+namespace utils_threadpool {
+namespace threading {
 class Runnable {
 public:
     typedef std::shared_ptr<Runnable> Ptr;
@@ -13,6 +15,8 @@ protected:
     Runnable(const Runnable &other){}
 
 };
+}
+}
 
 
 #endif // RUNNABLE_H

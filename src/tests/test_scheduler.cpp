@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+using namespace utils_threadpool;
+using namespace scheduling;
+
 std::mutex cnt_lock;
 int cnt = 0;
 

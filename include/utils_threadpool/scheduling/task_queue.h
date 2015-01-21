@@ -9,6 +9,8 @@
 #include <condition_variable>
 #include <queue>
 
+namespace utils_threadpool {
+namespace scheduling {
 class TaskQueue
 {
 public:
@@ -31,5 +33,7 @@ private:
     std::condition_variable waiting_cv_;
     std::queue<Task::Ptr>   waiting_;
 };
+}
+}
 
 #endif // TASK_QUEUE_H

@@ -4,6 +4,9 @@
 #include <thread>
 #include <iostream>
 
+using namespace utils_threadpool;
+using namespace threading;
+
 struct Increment : public Runnable {
     int count;
 

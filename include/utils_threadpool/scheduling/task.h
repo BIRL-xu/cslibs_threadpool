@@ -5,6 +5,8 @@
 #include <future>
 #include <functional>
 
+namespace utils_threadpool {
+namespace scheduling {
 class Task
 {
 public:
@@ -23,5 +25,7 @@ private:
     Task::Ptr appendix_;
 
 };
+}
+}
 
 #endif // TASK_H

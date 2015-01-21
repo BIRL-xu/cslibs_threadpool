@@ -1,6 +1,8 @@
 #include <utils_threadpool/scheduling/task_queue.h>
 
 using namespace std;
+using namespace utils_threadpool;
+using namespace scheduling;
 
 TaskQueue::TaskQueue()
 {

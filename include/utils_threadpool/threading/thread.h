@@ -7,6 +7,10 @@
 
 #include "runnable.h"
 
+
+namespace utils_threadpool {
+namespace threading {
+
 class ThreadPool;
 
 class Thread {
@@ -32,7 +36,8 @@ private:
 
 
 };
-
+}
+}
 
 #endif // THREAD_H
 

@@ -6,6 +6,8 @@
 #include "task_queue.h"
 #include "task_worker.h"
 
+namespace utils_threadpool {
+namespace scheduling {
 class TaskScheduler
 {
 public:
@@ -31,5 +33,7 @@ private:
     std::vector<TaskWorker::Ptr> workers_;
 
 };
+}
+}
 
 #endif // TASK_SCHEDULER_H

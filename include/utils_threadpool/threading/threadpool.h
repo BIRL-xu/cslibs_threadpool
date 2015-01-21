@@ -7,10 +7,10 @@
 #include <mutex>
 #include <vector>
 
+namespace utils_threadpool {
+namespace threading {
 class ThreadPool
 {
-    friend class Thread;
-
 public:
     ThreadPool();
 
@@ -26,5 +26,7 @@ private:
 
     void updateThreadList();
 };
+}
+}
 
 #endif // THREADPOOL_H

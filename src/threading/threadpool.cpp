@@ -1,6 +1,8 @@
 #include <utils_threadpool/threading/threadpool.h>
 
 using namespace std;
+using namespace utils_threadpool;
+using namespace threading;
 
 ThreadPool::ThreadPool()
 {
