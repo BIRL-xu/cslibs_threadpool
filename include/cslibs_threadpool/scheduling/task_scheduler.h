@@ -6,7 +6,7 @@
 #include "task_queue.h"
 #include "task_worker.h"
 
-namespace utils_threadpool {
+namespace cslibs_threadpool {
 namespace scheduling {
 class TaskScheduler
 {

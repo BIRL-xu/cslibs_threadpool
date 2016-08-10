@@ -2,14 +2,14 @@
 #define TASK_QUEUE_H
 
 #include "task.h"
-#include <utils_threadpool/sync/semaphore.h>
+#include <cslibs_threadpool/sync/semaphore.h>
 #include <thread>
 #include <mutex>
 #include <memory>
 #include <condition_variable>
 #include <queue>
 
-namespace utils_threadpool {
+namespace cslibs_threadpool {
 namespace scheduling {
 class TaskQueue
 {

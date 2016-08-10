@@ -1,10 +1,10 @@
-#include <utils_threadpool/scheduling/task.h>
+#include <cslibs_threadpool/scheduling/task.h>
 
 #include <chrono>
 #include <thread>
 
 using namespace std;
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace scheduling;
 
 Task::Task(function<void()> &todo) :

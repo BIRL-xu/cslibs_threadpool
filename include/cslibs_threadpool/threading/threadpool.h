@@ -7,7 +7,7 @@
 #include <mutex>
 #include <vector>
 
-namespace utils_threadpool {
+namespace cslibs_threadpool {
 namespace threading {
 class ThreadPool
 {

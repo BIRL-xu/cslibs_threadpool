@@ -1,7 +1,7 @@
 #include <opencv2/opencv.hpp>
-#include <utils_threadpool/scheduling/task_scheduler.h>
+#include <cslibs_threadpool/scheduling/task_scheduler.h>
 
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace scheduling;
 
 void update(unsigned int row,

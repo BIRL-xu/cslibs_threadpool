@@ -1,8 +1,8 @@
-#include <utils_threadpool/scheduling/task_scheduler.h>
+#include <cslibs_threadpool/scheduling/task_scheduler.h>
 
 #include <iostream>
 
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace scheduling;
 
 std::mutex cnt_lock;

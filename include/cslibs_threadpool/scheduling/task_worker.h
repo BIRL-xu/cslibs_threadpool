@@ -9,7 +9,7 @@
 #include <mutex>
 #include <atomic>
 
-namespace utils_threadpool {
+namespace cslibs_threadpool {
 namespace scheduling {
 class TaskWorker
 {

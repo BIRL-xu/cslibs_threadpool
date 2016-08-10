@@ -1,4 +1,4 @@
-#include <utils_threadpool/sync/semaphore.h>
+#include <cslibs_threadpool/sync/semaphore.h>
 
 using namespace std;
 

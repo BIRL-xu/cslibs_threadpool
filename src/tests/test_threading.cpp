@@ -1,10 +1,10 @@
-#include <utils_threadpool/threading/threadpool.h>
+#include <cslibs_threadpool/threading/threadpool.h>
 
 #include <chrono>
 #include <thread>
 #include <iostream>
 
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace threading;
 
 struct Increment : public Runnable {

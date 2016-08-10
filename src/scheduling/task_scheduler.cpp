@@ -1,6 +1,6 @@
-#include <utils_threadpool/scheduling/task_scheduler.h>
+#include <cslibs_threadpool/scheduling/task_scheduler.h>
 
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace scheduling;
 
 TaskScheduler::TaskScheduler(const unsigned int threads) :

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(utils_threadpool)
+project(cslibs_threadpool)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -24,7 +24,7 @@ endif()
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES utils_threadpool
+  LIBRARIES cslibs_threadpool
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -34,7 +34,7 @@ include_directories(
     include
 )
 
-add_library(utils_threadpool
+add_library(cslibs_threadpool
     src/threading/threadpool.cpp
     src/threading/thread.cpp
 
@@ -46,24 +46,24 @@ add_library(utils_threadpool
     src/sync/semaphore.cpp
 )
 
-target_link_libraries(utils_threadpool
+target_link_libraries(cslibs_threadpool
     pthread
 )
 
-add_executable(utils_threadpool_ts
+add_executable(cslibs_threadpool_ts
     src/tests/test_scheduler.cpp
 )
 
-target_link_libraries(utils_threadpool_ts
-    utils_threadpool
+target_link_libraries(cslibs_threadpool_ts
+    cslibs_threadpool
 )
 
-add_executable(utils_threadpool_th
+add_executable(cslibs_threadpool_th
     src/tests/test_threading.cpp
 )
 
-target_link_libraries(utils_threadpool_th
-    utils_threadpool
+target_link_libraries(cslibs_threadpool_th
+    cslibs_threadpool
 )
 
 
@@ -71,13 +71,13 @@ if(${OpenCV_FOUND})
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(utils_threadpool_tsv
+add_executable(cslibs_threadpool_tsv
     src/tests/test_scheduling_visual.cpp
 )
 
-target_link_libraries(utils_threadpool_tsv
+target_link_libraries(cslibs_threadpool_tsv
     ${OpenCV_LIBRARIES}
-    utils_threadpool
+    cslibs_threadpool
 )
 
 endif()

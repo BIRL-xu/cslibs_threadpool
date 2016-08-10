@@ -5,7 +5,7 @@
 #include <future>
 #include <functional>
 
-namespace utils_threadpool {
+namespace cslibs_threadpool {
 namespace scheduling {
 class Task
 {

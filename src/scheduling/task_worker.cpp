@@ -1,7 +1,7 @@
-#include <utils_threadpool/scheduling/task_worker.h>
+#include <cslibs_threadpool/scheduling/task_worker.h>
 
 using namespace std;
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace scheduling;
 
 TaskWorker::TaskWorker(TaskQueue::Ptr &task_queue) :

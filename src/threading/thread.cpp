@@ -1,7 +1,7 @@
-#include <utils_threadpool/threading/thread.h>
-#include <utils_threadpool/threading/threadpool.h>
+#include <cslibs_threadpool/threading/thread.h>
+#include <cslibs_threadpool/threading/threadpool.h>
 
-using namespace utils_threadpool;
+using namespace cslibs_threadpool;
 using namespace threading;
 
 Thread::Thread(ThreadPool &pool,

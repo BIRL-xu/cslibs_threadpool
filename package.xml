@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>utils_threadpool</name>
+  <name>cslibs_threadpool</name>
   <version>0.0.1</version>
-  <description>The utils_threadpool package contains a c++11 library to realize controlled threading.</description>
+  <description>The cslibs_threadpool package contains a c++11 library to realize controlled threading.</description>
 
   <maintainer email="richard.hanten@uni-tuebingen.de">hanten</maintainer>
 
