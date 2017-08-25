@@ -1,8 +1,9 @@
 #ifndef TASK_QUEUE_H
 #define TASK_QUEUE_H
 
-#include "task.h"
+#include <cslibs_threadpool/scheduling/task.h>
 #include <cslibs_threadpool/sync/semaphore.h>
+
 #include <thread>
 #include <mutex>
 #include <memory>

@@ -2,15 +2,18 @@
 #define TASK_SCHEDULER_H
 
 #include <thread>
+#include <memory>
 
-#include "task_queue.h"
-#include "task_worker.h"
+#include <cslibs_threadpool/scheduling/task_queue.h>
+#include <cslibs_threadpool/scheduling/task_worker.h>
 
 namespace cslibs_threadpool {
 namespace scheduling {
 class TaskScheduler
 {
 public:
+    using Ptr = std::shared_ptr<TaskScheduler>;
+
     TaskScheduler(const unsigned int threads = 2);
     virtual ~TaskScheduler();
 

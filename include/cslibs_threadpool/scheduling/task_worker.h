@@ -1,8 +1,7 @@
 #ifndef TASK_WORKER_THREAD_H
 #define TASK_WORKER_THREAD_H
 
-#include "task.h"
-#include "task_queue.h"
+#include <cslibs_threadpool/scheduling/task_queue.h>
 
 #include <thread>
 #include <future>

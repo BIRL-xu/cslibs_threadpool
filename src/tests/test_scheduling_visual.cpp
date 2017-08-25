@@ -42,6 +42,8 @@ int main(int argc, char *argv[])
         }
     }
 
+    ts.wait();
+
     cv::imshow("test_threadpool_visual", m);
     cv::waitKey(0);
 

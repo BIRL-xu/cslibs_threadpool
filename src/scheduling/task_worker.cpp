@@ -9,13 +9,15 @@ TaskWorker::TaskWorker(TaskQueue::Ptr &task_queue) :
     task_queue_(task_queue),
     running_(false),
     interruption_requested_(false),
-    thread_(bind(&TaskWorker::run, this))
+    thread_([this](){run();})
 {
+    thread_.detach();
 }
 
 TaskWorker::~TaskWorker()
 {
-    thread_.join();
+    if(thread_.joinable())
+        thread_.join();
 }
 
 void TaskWorker::done()
